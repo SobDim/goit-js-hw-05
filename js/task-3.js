@@ -8,11 +8,7 @@
 
 */
 const sortByDescendingFriendCount = users => {
-  const numberOfFriends = users.friends.length;
-
-  console.log(numberOfFriends);
-
-  return users.toSorted((a, b) => a.localeCompare(b));
+  return users.toSorted((a, b) => b.friends.length - a.friends.length);
 };
 
 //перевірка
