@@ -1,37 +1,94 @@
 /* 
 
-Доповни об’єкт profile методами для роботи з його властивостями.
+Напиши стрілочну функцію sortByDescendingFriendCount(users) , яка прийматиме один параметр users — масив об’єктів користувачів.
 
-Метод changeUsername(newName) повинен приймати рядок (нове ім’я)
- в параметр newName та змінювати значення властивості username на нове. Нічого не повертає.
-Метод updatePlayTime(hours) повинен приймати число (кількість годин) 
-у параметр hours та збільшити на нього значення властивості playTime.
- Нічого не повертає.
-Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!, 
-де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин.
+Функція має повертати масив усіх користувачів, відсортованих за спаданням кількостій їх друзів (властивість friends).
+
+Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
 
 */
+const sortByDescendingFriendCount = users => {
+  const numberOfFriends = users.friends.length;
 
-const profile = {
-  username: 'Jacob',
-  playTime: 300,
-  changeUsername(newName) {
-    return (this.username = newName);
-  },
+  console.log(numberOfFriends);
 
-  updatePlayTime(hours) {
-    return (this.playTime += hours);
-  },
-
-  getInfo() {
-    return `${this.username} has ${this.playTime} active hours!`;
-  },
+  return users.toSorted((a, b) => a.localeCompare(b));
 };
 
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
-
-profile.changeUsername('Marco');
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
-
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+//перевірка
+console.log(
+  sortByDescendingFriendCount([
+    {
+      name: 'Moore Hensley',
+      friends: ['Sharron Pace'],
+      gender: 'male',
+    },
+    {
+      name: 'Sharlene Bush',
+      friends: ['Briana Decker', 'Sharron Pace'],
+      gender: 'female',
+    },
+    {
+      name: 'Ross Vazquez',
+      friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+      gender: 'male',
+    },
+    {
+      name: 'Elma Head',
+      friends: ['Goldie Gentry', 'Aisha Tran'],
+      gender: 'female',
+    },
+    {
+      name: 'Carey Barr',
+      friends: ['Jordan Sampson', 'Eddie Strong'],
+      gender: 'male',
+    },
+    {
+      name: 'Blackburn Dotson',
+      friends: ['Jacklyn Lucas', 'Linda Chapman'],
+      gender: 'male',
+    },
+    {
+      name: 'Sheree Anthony',
+      friends: ['Goldie Gentry', 'Briana Decker'],
+      gender: 'female',
+    },
+  ])
+);
+// [
+//   {
+//     name: "Ross Vazquez",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Moore Hensley",
+//     friends: ["Sharron Pace"],
+//     gender: "male"
+//   }
+// ]
